@@ -1,0 +1,22 @@
+[package]
+name = "arcframe-hashwalk"
+version = "0.1.0"
+edition = "2021"
+description = "Parallel filesystem walk + content hashing for Arcframe index invalidation"
+license = "MIT"
+publish = false
+
+[[bin]]
+name = "arcframe-hashwalk"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+ignore = "0.4"
+rayon = "1.10"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+
+[dev-dependencies]
+tempfile = "3.14"

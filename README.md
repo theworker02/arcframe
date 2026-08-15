@@ -94,6 +94,9 @@ Thin surfaces, one engine. Local state lives under `.arcframe/` (SQLite, cache, 
 | `apps/docs` | VitePress documentation site |
 | `rules/`, `skills/` | Engineering rule pack and skill prompts |
 | `adapters/` | Language / framework / tool adapter layout |
+| `native/` | Optional Rust/Go accelerators (`arcframe-hashwalk`, `arcframe-gitmeta`) — see [native/README.md](./native/README.md) |
+
+TypeScript remains the control plane. Native binaries are optional: discovered via `ARCFRAME_NATIVE_DIR`, `native/bin/`, crate build outputs, or `PATH`, with graceful JS fallback when missing (`pnpm native:build`).
 
 ---
 

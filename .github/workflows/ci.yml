@@ -78,3 +78,20 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm audit --prod || true
+
+  native:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+      - name: Build and test native accelerators
+        run: node ./scripts/native-build.mjs
+      - name: Verify binaries
+        run: |
+          test -x native/bin/arcframe-hashwalk
+          test -x native/bin/arcframe-gitmeta
+          ./native/bin/arcframe-hashwalk --help
+          ./native/bin/arcframe-gitmeta help

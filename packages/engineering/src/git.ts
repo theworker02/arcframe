@@ -3,6 +3,7 @@ import {
   commandExists,
   dirExists,
   execCommand,
+  tryNativeGitmeta,
   type ConfidenceLevel,
 } from "@arcframe/core";
 
@@ -18,7 +19,41 @@ export interface GitStatus {
   confidence: ConfidenceLevel;
 }
 
+interface NativeStatusPayload {
+  available: boolean;
+  branch: string | null;
+  clean: boolean | null;
+  ahead: number | null;
+  behind: number | null;
+  staged: string[];
+  unstaged: string[];
+  untracked: string[];
+  confidence: ConfidenceLevel;
+}
+
+function normalizeStatus(data: NativeStatusPayload): GitStatus {
+  return {
+    available: Boolean(data.available),
+    branch: data.branch ?? null,
+    clean: data.clean ?? null,
+    ahead: data.ahead ?? null,
+    behind: data.behind ?? null,
+    staged: Array.isArray(data.staged) ? data.staged : [],
+    unstaged: Array.isArray(data.unstaged) ? data.unstaged : [],
+    untracked: Array.isArray(data.untracked) ? data.untracked : [],
+    confidence: data.confidence === "confirmed" ? "confirmed" : "unknown",
+  };
+}
+
 export async function inspectGit(root: string): Promise<GitStatus> {
+  const native = await tryNativeGitmeta<NativeStatusPayload>(root, "status");
+  if (native) {
+    return normalizeStatus(native.data);
+  }
+  return inspectGitJs(root);
+}
+
+async function inspectGitJs(root: string): Promise<GitStatus> {
   const hasGit = await commandExists("git");
   if (!hasGit || !dirExists(join(root, ".git"))) {
     return {
@@ -100,6 +135,13 @@ export async function inspectGit(root: string): Promise<GitStatus> {
 }
 
 export async function gitLog(root: string, limit = 10): Promise<string[]> {
+  const native = await tryNativeGitmeta<{ entries?: string[] }>(root, "log", [
+    String(limit),
+  ]);
+  if (native && Array.isArray(native.data.entries)) {
+    return native.data.entries;
+  }
+
   const res = await execCommand(
     "git",
     ["log", `-n${limit}`, "--pretty=format:%h %s (%an)"],
@@ -138,13 +180,26 @@ export async function gitBlame(
   root: string,
   path: string,
 ): Promise<{ path: string; lines: string[]; confidence: ConfidenceLevel }> {
+  const native = await tryNativeGitmeta<{
+    path?: string;
+    lines?: string[];
+    confidence?: ConfidenceLevel;
+  }>(root, "blame", [path]);
+  if (native && Array.isArray(native.data.lines)) {
+    return {
+      path: native.data.path ?? path,
+      lines: native.data.lines,
+      confidence:
+        native.data.confidence === "confirmed" ? "confirmed" : "unknown",
+    };
+  }
+
   const res = await execCommand("git", ["blame", "--line-porcelain", "--", path], {
     cwd: root,
   });
   if (res.exitCode !== 0) {
     return { path, lines: [], confidence: "unknown" };
   }
-  // Compact summary: author + line content only (not full porcelain dump)
   const lines: string[] = [];
   let author = "?";
   for (const line of res.stdout.split(/\r?\n/)) {

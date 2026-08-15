@@ -19,4 +19,6 @@ One engine — surfaces are thin:
 | `cli` | `arc` / `arcframe` |
 | `servers/mcp` | MCP tools, resources, prompts |
 
+Optional accelerators live under `native/` (Rust `arcframe-hashwalk`, Go `arcframe-gitmeta`). TypeScript remains the control plane; binaries are discovered via `ARCFRAME_NATIVE_DIR` / `native/bin` with JS fallback. See [native/README.md](https://github.com/theworker02/arcframe/blob/main/native/README.md).
+
 Cursor plugin and docs/landing do not reimplement analysis.

@@ -11,6 +11,7 @@ export * from "./permissions.js";
 export * from "./process.js";
 export * from "./project.js";
 export * from "./ignore.js";
+export * from "./native.js";
 
 import { createCache, type CacheStore } from "./cache.js";
 import {

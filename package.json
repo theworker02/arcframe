@@ -25,6 +25,7 @@
     "dev:mcp": "pnpm --filter @arcframe/mcp build && node ./servers/mcp/dist/index.js",
     "dogfood": "node ./cli/dist/bin.js init && node ./cli/dist/bin.js status && node ./cli/dist/bin.js health",
     "sync:brand": "node ./scripts/sync-brand-assets.mjs",
+    "native:build": "node ./scripts/native-build.mjs",
     "build:apps": "pnpm --filter @arcframe/dashboard --filter @arcframe/docs --filter ./apps/cursor-plugin run build"
   },
   "devDependencies": {

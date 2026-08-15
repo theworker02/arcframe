@@ -26,3 +26,8 @@ apps/dashboard/out/
 apps/cursor-plugin/out/
 *.vsix
 .pnpm-store/
+native/bin/
+native/arcframe-hashwalk/target/
+native/arcframe-gitmeta/arcframe-gitmeta
+native/arcframe-gitmeta/arcframe-gitmeta.exe
+

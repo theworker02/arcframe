@@ -16,6 +16,7 @@ Honest status after the 0.4 MCP expansion toward v1.0.
 - [x] **MCP ≥30 tools hard gate** — **108** distinct tools registered + dogfood (`security_secret_patterns`, `analyze_unused`, `command_explain`/`command_detect`, `debug_*`, `performance_*`, `release_readiness`, …)
 - [x] VitePress docs + Cursor sidebar sections
 - [x] Dogfood on Arcframe repo (health A, validate ok)
+- [x] Optional native accelerators: Rust `arcframe-hashwalk` + Go `arcframe-gitmeta` (JS fallback; `pnpm native:build`)
 
 ## Post-1.0 / still open
 

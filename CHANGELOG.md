@@ -6,6 +6,7 @@ All notable changes to Arcframe will be documented here.
 
 ### Added
 
+- Optional native accelerators under `native/`: Rust `arcframe-hashwalk` (parallel walk + SHA-256 for index invalidation) and Go `arcframe-gitmeta` (structured git status/blame/log JSON), with TS discovery (`ARCFRAME_NATIVE_DIR` / `native/bin`) and JS fallback; `pnpm native:build`
 - MCP: **108** distinct tools registered (`servers/mcp` tools.ts + handlers.ts); ListTools/dogfood scripts verify â‰¥30
 - Cooler MCP tools: `security_secret_patterns`, `performance_*`, `debug_parse_stacktrace`, `debug_locate_error`, `debug_suspect_symbols`, `analyze_unused`, `command_explain`, `command_detect`, `ci_detect`, `release_readiness`, `project_health_summary`, `mcp_tool_count`
 - `arc security scan` â€” secret pattern + entropy scan (path/line/pattern only; values never printed); findings stored in `security:last_scan` meta
