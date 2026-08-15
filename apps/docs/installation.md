@@ -4,7 +4,7 @@ title: Installation
 
 # Installation
 
-Requires **Node.js ≥ 20** and **pnpm 9**.
+Requires **Node.js ≥ 22.5** (built-in `node:sqlite`) and **pnpm 9**.
 
 Arcframe is **GitHub-first** — not on the npm registry. Do not run `npm install -g @arcframe/…`.
 
