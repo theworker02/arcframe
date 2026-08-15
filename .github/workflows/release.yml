@@ -15,8 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -52,13 +50,13 @@ jobs:
           cat > release-notes.md <<'EOF'
           ## Arcframe ${GITHUB_REF_NAME}
 
-          Local-first engineering control plane for Cursor — ~136 MCP tools, CLI, Arc Index / Arc Graph, MIT.
+          Local-first engineering control plane for Cursor â€” ~136 MCP tools, CLI, Arc Index / Arc Graph, MIT.
 
           ### Install
 
           Arcframe is **not** on npm. Prefer clone + build, or these artifacts.
 
-          - **Plugin:** install `arcframe.vsix` (Extensions → Install from VSIX)
+          - **Plugin:** install `arcframe.vsix` (Extensions â†’ Install from VSIX)
           - **CLI / MCP:** extract the `.tar.gz`, then run `node cli/dist/bin.js` / `node servers/mcp/dist/index.js`
           - Verify: `sha256sum -c SHA256SUMS.txt`
 
