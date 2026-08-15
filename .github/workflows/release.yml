@@ -50,13 +50,13 @@ jobs:
           cat > release-notes.md <<'EOF'
           ## Arcframe ${GITHUB_REF_NAME}
 
-          Local-first engineering control plane for Cursor â€” ~136 MCP tools, CLI, Arc Index / Arc Graph, MIT.
+          Local-first engineering control plane for Cursor - ~136 MCP tools, CLI, Arc Index / Arc Graph, MIT.
 
           ### Install
 
           Arcframe is **not** on npm. Prefer clone + build, or these artifacts.
 
-          - **Plugin:** install `arcframe.vsix` (Extensions â†’ Install from VSIX)
+          - **Plugin:** install `arcframe.vsix` (Extensions -> Install from VSIX)
           - **CLI / MCP:** extract the `.tar.gz`, then run `node cli/dist/bin.js` / `node servers/mcp/dist/index.js`
           - Verify: `sha256sum -c SHA256SUMS.txt`
 
@@ -68,14 +68,25 @@ jobs:
           EOF
           sed -i 's/^          //' release-notes.md
           sed -i "s/\${GITHUB_REF_NAME}/${GITHUB_REF_NAME}/g" release-notes.md
-      - name: Create GitHub Release
+      - name: Create or update GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" \
-            arcframe.vsix \
-            "arcframe-node-${GITHUB_REF_NAME}.tar.gz" \
-            SHA256SUMS.txt \
-            --generate-notes \
-            --title "Arcframe ${GITHUB_REF_NAME}" \
-            --notes-file release-notes.md
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" \
+              arcframe.vsix \
+              "arcframe-node-${GITHUB_REF_NAME}.tar.gz" \
+              SHA256SUMS.txt \
+              --clobber
+            gh release edit "$GITHUB_REF_NAME" \
+              --title "Arcframe ${GITHUB_REF_NAME}" \
+              --notes-file release-notes.md
+          else
+            gh release create "$GITHUB_REF_NAME" \
+              arcframe.vsix \
+              "arcframe-node-${GITHUB_REF_NAME}.tar.gz" \
+              SHA256SUMS.txt \
+              --generate-notes \
+              --title "Arcframe ${GITHUB_REF_NAME}" \
+              --notes-file release-notes.md
+          fi

@@ -1,7 +1,8 @@
 # Distribution
 
-Arcframe is **not** published to the npm registry as the primary install channel.
-All `@arcframe/*` packages and the Cursor plugin are marked `"private": true` until an intentional npm release is decided.
+Arcframe is **GitHub-first**. Workspace packages (`@arcframe/*`) stay `"private": true` and are **never** published to the npm registry. Install via clone, GitHub Release artifacts, or VSIX — not `npm install -g @arcframe/…`.
+
+pnpm workspaces remain for **local monorepo installs** only (`pnpm install` / `pnpm build`).
 
 ## Install (recommended)
 
@@ -32,9 +33,9 @@ Built by .github/workflows/pages.yml with `ARCFRAME_SITE_URL=https://theworker02
 
 | Surface | How to install / run | Artifact |
 |---------|----------------------|----------|
-| **CLI** | From repo: `node ./cli/dist/bin.js` (or root `pnpm arc`) | Optional: GitHub Release tarball of the built monorepo / `cli` + `packages` |
-| **MCP** | Local path in Cursor MCP settings | `servers/mcp/dist/index.js` after `pnpm build` |
-| **Cursor / VS Code plugin** | Load unpacked or install `.vsix` from Releases | `apps/cursor-plugin` → `pnpm --filter ./apps/cursor-plugin package:vsix` |
+| **CLI** | From repo: `node ./cli/dist/bin.js` (or root `pnpm arc`) | GitHub Release `arcframe-node-v*.tar.gz` |
+| **MCP** | Local path in Cursor MCP settings | `servers/mcp/dist/index.js` after `pnpm build` (or Release tarball) |
+| **Cursor / VS Code plugin** | Install `.vsix` from Releases (or build locally) | `arcframe.vsix` |
 | **Docs** | `pnpm --filter @arcframe/docs build` | Static VitePress site under `apps/docs/.vitepress/dist` |
 | **Dashboard** | `pnpm --filter @arcframe/dashboard build` | Static site under `apps/dashboard/dist` |
 
@@ -52,7 +53,7 @@ Built by .github/workflows/pages.yml with `ARCFRAME_SITE_URL=https://theworker02
 }
 ```
 
-Do **not** expect `npx @arcframe/mcp` until packages are published. Prefer clone + build, or a Release asset that includes `servers/mcp/dist` and workspace package `dist` folders.
+There is no `npx @arcframe/mcp` / registry package. Prefer clone + build, or a Release tarball that includes `servers/mcp/dist` and workspace package `dist` folders.
 
 ### Plugin (VSIX)
 
@@ -62,25 +63,33 @@ pnpm --filter ./apps/cursor-plugin package:vsix
 # Install arcframe.vsix via Cursor/VS Code: Extensions → … → Install from VSIX
 ```
 
+Or download `arcframe.vsix` from [GitHub Releases](https://github.com/theworker02/arcframe/releases).
+
 Activity-bar icon: `apps/cursor-plugin/media/icon.svg`  
 Marketplace icon: `apps/cursor-plugin/media/arcframe-icon-128.png`
 
-### CLI binary / tarball (GitHub Releases)
+### CLI / MCP tarball (GitHub Releases)
 
-Until standalone binaries exist, release a source-built tarball:
+Tag-triggered workflow [`.github/workflows/release.yml`](./.github/workflows/release.yml) attaches:
+
+1. `arcframe.vsix` — Cursor / VS Code extension
+2. `arcframe-node-vX.Y.Z.tar.gz` — built `cli` / `packages` / `servers/mcp` tree
+3. `SHA256SUMS.txt`
+
+Manual equivalent:
 
 1. `pnpm install && pnpm build`
-2. Archive the repo (or at minimum `cli/dist`, `packages/*/dist`, `servers/mcp/dist`, `package.json`, `pnpm-lock.yaml`)
+2. Archive `cli/dist`, `packages/*/dist`, `servers/mcp/dist`, workspace `package.json` files, lockfile
 3. Attach to a GitHub Release tagged `vX.Y.Z`
-4. Document: extract → `pnpm install --prod` (if needed) → `node cli/dist/bin.js`
+4. Document: extract → `node cli/dist/bin.js` / `node servers/mcp/dist/index.js`
 
-## Why not npm (yet)
+## Why not npm
 
 - Packages use `workspace:*` dependencies and assume a monorepo layout.
-- Half-configured `files`/`exports` without a real publish pipeline confuses adopters.
-- Primary consumers today install via GitHub (CLI + MCP path) and VSIX (plugin).
+- Primary consumers install via GitHub (clone / Release tarball) and VSIX (plugin).
+- Half-configured registry packaging confuses adopters; Arcframe does not ship npm packages.
 
-When npm is intentional later: remove `"private": true` only from packages you mean to publish, add `publishConfig`, and ship a real Changesets/semantic-release workflow. Until then, **do not** `npm publish`.
+**Do not** run `npm publish` / `pnpm publish` for any `@arcframe/*` package.
 
 ## GitHub Release checklist
 
@@ -91,15 +100,15 @@ See [`.github/workflows/release.yml`](./.github/workflows/release.yml) (tag-trig
 - [ ] Build VSIX; attach `arcframe.vsix`
 - [ ] Attach CLI/MCP tarball (or full built tree)
 - [ ] Release notes: clone install, MCP JSON snippet, VSIX install steps
-- [ ] No npm publish step
+- [ ] No npm / registry publish step
 
 ## Package privacy
 
 | Package | Status |
 |---------|--------|
 | Root `arcframe` | `private: true` |
-| `@arcframe/core` … `@arcframe/workflows` | `private: true` (unpublished) |
-| `@arcframe/cli` | `private: true` — distribute via clone / Release |
-| `@arcframe/mcp` | `private: true` — distribute via clone / Release |
-| `apps/cursor-plugin` (`arcframe`) | `private: true` — distribute via VSIX |
+| `@arcframe/core` … `@arcframe/workflows` | `private: true` — workspace only |
+| `@arcframe/cli` | `private: true` — clone / Release |
+| `@arcframe/mcp` | `private: true` — clone / Release |
+| `apps/cursor-plugin` (`arcframe`) | `private: true` — VSIX |
 | `@arcframe/docs`, `@arcframe/dashboard` | `private: true` |

@@ -2,12 +2,12 @@
   "name": "arcframe",
   "version": "0.4.0",
   "private": true,
-  "description": "Engineering control plane for Cursor â€” local-first Cursor MCP, Arc Index, Arc Graph, and repository intelligence for AI coding agents",
+  "description": "Engineering control plane for Cursor - local-first Cursor MCP, Arc Index, Arc Graph, and repository intelligence for AI coding agents",
   "license": "MIT",
   "type": "module",
   "packageManager": "pnpm@9.15.9",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.5.0"
   },
   "bin": {
     "arc": "./cli/dist/bin.js",

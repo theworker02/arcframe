@@ -115,13 +115,13 @@ Thin surfaces, one engine. Local state lives under `.arcframe/` (SQLite, cache, 
 
 Live site: [https://theworker02.github.io/arcframe](https://theworker02.github.io/arcframe) · Docs: [https://theworker02.github.io/arcframe/docs/](https://theworker02.github.io/arcframe/docs/)
 
-Arcframe is **GitHub-first** — packages are marked private and are **not** published to the npm registry.
+Arcframe is **GitHub-first** — all workspace packages are `"private": true` and are **never** published to the npm registry. Do not use `npm install -g @arcframe/…`.
 
 | Surface | Install path |
 |---------|----------------|
-| CLI | Clone → `pnpm build` → `node ./cli/dist/bin.js` |
+| CLI | Clone → `pnpm install && pnpm build` → `node ./cli/dist/bin.js` |
 | MCP | Same build → point Cursor at `servers/mcp/dist/index.js` |
-| Cursor plugin | Build VSIX: `pnpm --filter ./apps/cursor-plugin package:vsix` → Install from VSIX |
+| Cursor plugin | Download VSIX from Releases, or `pnpm --filter ./apps/cursor-plugin package:vsix` → Install from VSIX |
 | Releases | Tag `v*` artifacts (VSIX + node tarball) — see [DISTRIBUTION.md](./DISTRIBUTION.md) |
 
 Full distribution notes: **[DISTRIBUTION.md](./DISTRIBUTION.md)**.
