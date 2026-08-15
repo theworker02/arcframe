@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src/**/*"],
+  "references": [
+    { "path": "../../packages/core" },
+    { "path": "../../packages/storage" },
+    { "path": "../../packages/analyzer" },
+    { "path": "../../packages/graph" },
+    { "path": "../../packages/memory" },
+    { "path": "../../packages/context" },
+    { "path": "../../packages/engineering" }
+  ]
+}

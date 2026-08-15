@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Arcframe">
+  <!-- Dark-surface plate: copper mark on brand charcoal -->
+  <rect width="128" height="128" rx="28" fill="#090A0C"/>
+  <g fill="none" stroke="#D59255" stroke-width="2" stroke-linecap="square" opacity="0.55">
+    <path d="M22 42V22h20"/>
+    <path d="M106 42V22H86"/>
+    <path d="M22 86v20h20"/>
+    <path d="M106 86v20H86"/>
+  </g>
+  <g fill="none" stroke="#D59255" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M40 46C50 24 78 24 88 46"/>
+    <path d="M40 46C34 60 34 76 40 90"/>
+    <path d="M88 46C94 60 94 76 88 90"/>
+    <path d="M50 70h28"/>
+  </g>
+  <circle cx="40" cy="46" r="6.5" fill="#E8B37A"/>
+  <circle cx="88" cy="46" r="6.5" fill="#D59255"/>
+  <circle cx="40" cy="90" r="6.5" fill="#D59255"/>
+  <circle cx="88" cy="90" r="6.5" fill="#B87333"/>
+</svg>

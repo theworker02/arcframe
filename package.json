@@ -1,0 +1,37 @@
+{
+  "name": "arcframe",
+  "version": "0.4.0",
+  "private": true,
+  "description": "Engineering control plane for Cursor â€” local-first Cursor MCP, Arc Index, Arc Graph, and repository intelligence for AI coding agents",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "bin": {
+    "arc": "./cli/dist/bin.js",
+    "arcframe": "./cli/dist/bin.js"
+  },
+  "scripts": {
+    "build": "pnpm -r --filter=./packages/* --filter=./cli --filter=./servers/* run build",
+    "build:all": "pnpm -r run build",
+    "typecheck": "pnpm -r --filter=./packages/* --filter=./cli --filter=./servers/* run typecheck",
+    "test": "pnpm -r --filter=./packages/* --filter=./cli --filter=./servers/* run test",
+    "lint": "pnpm -r --filter=./packages/* --filter=./cli --filter=./servers/* run lint --if-present",
+    "clean": "pnpm -r exec rimraf dist .turbo coverage",
+    "arc": "node ./cli/dist/bin.js",
+    "dev:cli": "pnpm --filter @arcframe/cli build && node ./cli/dist/bin.js",
+    "dev:mcp": "pnpm --filter @arcframe/mcp build && node ./servers/mcp/dist/index.js",
+    "dogfood": "node ./cli/dist/bin.js init && node ./cli/dist/bin.js status && node ./cli/dist/bin.js health",
+    "sync:brand": "node ./scripts/sync-brand-assets.mjs",
+    "build:apps": "pnpm --filter @arcframe/dashboard --filter @arcframe/docs --filter ./apps/cursor-plugin run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "rimraf": "^6.0.1",
+    "sharp": "^0.35.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  }
+}

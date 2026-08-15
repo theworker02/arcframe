@@ -1,0 +1,28 @@
+name: Feature request
+description: Propose an Arcframe capability
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+    validations:
+      required: true
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Layer
+      options:
+        - Core
+        - Analyzer/Graph
+        - Context/Memory
+        - MCP
+        - CLI
+        - Cursor plugin
+        - Docs/Product

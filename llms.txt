@@ -1,0 +1,15 @@
+# Arcframe
+
+> Local-first engineering control plane for Cursor — Cursor MCP, Arc Index, Arc Graph, blast-radius impact analysis, and repository intelligence for AI coding agents.
+
+## Docs
+
+- [VitePress docs](https://arcframe.dev/docs/): Install, architecture, MCP, Arc Index, Arc Graph, impact
+- [SEO positioning](https://arcframe.dev/docs/seo): How the project is described for search
+- [GitHub README](https://github.com/theworker02/arcframe): Quick start and feature overview
+- [MCP inventory](https://github.com/theworker02/arcframe/blob/main/docs/mcp.md): Tool categories for Cursor agents
+
+## Optional
+
+- Source: https://github.com/theworker02/arcframe
+- Replace `https://arcframe.dev` with your deploy origin (`ARCFRAME_SITE_URL` at build time).

@@ -1,0 +1,42 @@
+{
+  "name": "@arcframe/cli",
+  "version": "0.4.0",
+  "description": "Arcframe CLI â€” arc / arcframe",
+  "type": "module",
+  "bin": {
+    "arc": "./dist/bin.js",
+    "arcframe": "./dist/bin.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@arcframe/analyzer": "workspace:*",
+    "@arcframe/context": "workspace:*",
+    "@arcframe/core": "workspace:*",
+    "@arcframe/engineering": "workspace:*",
+    "@arcframe/graph": "workspace:*",
+    "@arcframe/memory": "workspace:*",
+    "@arcframe/storage": "workspace:*",
+    "@arcframe/workflows": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  },
+  "private": true
+}

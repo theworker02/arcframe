@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Prefer the deployed landing + docs sitemaps once the site is live.
+# Default placeholder origin: https://arcframe.dev
+Sitemap: https://arcframe.dev/sitemap.xml
+Sitemap: https://arcframe.dev/docs/sitemap.xml

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Arcframe">
+  <rect width="32" height="32" rx="7" fill="#090A0C"/>
+  <g fill="none" stroke="#B87333" stroke-width="1.15" stroke-linecap="square" opacity="0.55">
+    <path d="M5.5 11V5.5H11"/>
+    <path d="M26.5 11V5.5H21"/>
+    <path d="M5.5 21v5.5H11"/>
+    <path d="M26.5 21v5.5H21"/>
+  </g>
+  <g fill="none" stroke="#B87333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 12C12.5 6.5 19.5 6.5 22 12"/>
+    <path d="M10 12C8.5 15.5 8.5 19.5 10 23"/>
+    <path d="M22 12C23.5 15.5 23.5 19.5 22 23"/>
+    <path d="M12.5 17.5h7"/>
+  </g>
+  <circle cx="10" cy="12" r="2" fill="#E8B37A"/>
+  <circle cx="22" cy="12" r="2" fill="#D59255"/>
+  <circle cx="10" cy="23" r="2" fill="#D59255"/>
+  <circle cx="22" cy="23" r="2" fill="#B87333"/>
+</svg>

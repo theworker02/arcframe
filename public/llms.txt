@@ -1,0 +1,7 @@
+# Arcframe
+
+> Local-first engineering control plane for Cursor — Cursor MCP, repository intelligence, Arc Index, Arc Graph, and AI coding agent context.
+
+- Docs: https://arcframe.dev/docs/
+- SEO: https://arcframe.dev/docs/seo
+- GitHub: https://github.com/theworker02/arcframe

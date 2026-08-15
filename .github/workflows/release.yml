@@ -1,0 +1,83 @@
+name: Release
+
+# Tag-triggered release artifacts (VSIX + built tree). Does NOT publish to npm.
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: node ./scripts/sync-brand-assets.mjs
+      - run: pnpm -r --filter=./packages/* --filter=./cli --filter=./servers/* --filter=./apps/cursor-plugin run build
+      - name: Package VSIX
+        working-directory: apps/cursor-plugin
+        run: npx --yes @vscode/vsce package --no-dependencies -o ../../arcframe.vsix
+      - name: Pack CLI + MCP tree
+        run: |
+          tar -czf "arcframe-node-${GITHUB_REF_NAME}.tar.gz" \
+            package.json pnpm-lock.yaml pnpm-workspace.yaml \
+            cli/dist cli/package.json \
+            servers/mcp/dist servers/mcp/package.json \
+            packages/*/dist packages/*/package.json \
+            assets
+      - name: Checksums
+        run: |
+          sha256sum arcframe.vsix "arcframe-node-${GITHUB_REF_NAME}.tar.gz" > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: arcframe-release
+          path: |
+            arcframe.vsix
+            arcframe-node-*.tar.gz
+            SHA256SUMS.txt
+      - name: Write release notes
+        run: |
+          cat > release-notes.md <<'EOF'
+          ## Arcframe ${GITHUB_REF_NAME}
+
+          Local-first engineering control plane for Cursor — ~136 MCP tools, CLI, Arc Index / Arc Graph, MIT.
+
+          ### Install
+
+          Arcframe is **not** on npm. Prefer clone + build, or these artifacts.
+
+          - **Plugin:** install `arcframe.vsix` (Extensions → Install from VSIX)
+          - **CLI / MCP:** extract the `.tar.gz`, then run `node cli/dist/bin.js` / `node servers/mcp/dist/index.js`
+          - Verify: `sha256sum -c SHA256SUMS.txt`
+
+          ### Links
+
+          - Site: https://theworker02.github.io/arcframe/
+          - Docs: https://theworker02.github.io/arcframe/docs/
+          - Distribution: https://github.com/theworker02/arcframe/blob/main/DISTRIBUTION.md
+          EOF
+          sed -i 's/^          //' release-notes.md
+          sed -i "s/\${GITHUB_REF_NAME}/${GITHUB_REF_NAME}/g" release-notes.md
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            arcframe.vsix \
+            "arcframe-node-${GITHUB_REF_NAME}.tar.gz" \
+            SHA256SUMS.txt \
+            --generate-notes \
+            --title "Arcframe ${GITHUB_REF_NAME}" \
+            --notes-file release-notes.md

@@ -1,0 +1,74 @@
+{
+  "name": "arcframe",
+  "displayName": "Arcframe",
+  "description": "The engineering control plane for Cursor â€” local-first index, graph, and health",
+  "version": "0.4.0",
+  "publisher": "theworker02",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "arcframe.status",
+        "title": "Arcframe: Status"
+      },
+      {
+        "command": "arcframe.health",
+        "title": "Arcframe: Health"
+      },
+      {
+        "command": "arcframe.reindex",
+        "title": "Arcframe: Rebuild Index"
+      },
+      {
+        "command": "arcframe.openSidebar",
+        "title": "Arcframe: Open Sidebar"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "arcframe",
+          "title": "Arcframe",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "arcframe": [
+        {
+          "type": "webview",
+          "id": "arcframe.sidebar",
+          "name": "Arcframe"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "package:vsix": "npx --yes @vscode/vsce package --no-dependencies -o arcframe.vsix"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  },
+  "private": true,
+  "icon": "media/arcframe-icon-128.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theworker02/arcframe"
+  },
+  "homepage": "https://github.com/theworker02/arcframe",
+  "license": "MIT"
+}

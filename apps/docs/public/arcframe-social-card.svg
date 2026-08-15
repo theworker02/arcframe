@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Arcframe — engineering control plane for Cursor">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090A0C"/>
+      <stop offset="55%" stop-color="#0E1014"/>
+      <stop offset="100%" stop-color="#161A22"/>
+    </linearGradient>
+    <linearGradient id="copper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8B37A"/>
+      <stop offset="50%" stop-color="#D59255"/>
+      <stop offset="100%" stop-color="#B87333"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="28%" cy="48%" r="42%">
+      <stop offset="0%" stop-color="#B87333" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#090A0C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <!-- subtle grid for control-plane atmosphere -->
+  <g stroke="#F4F4F5" stroke-opacity="0.035" stroke-width="1">
+    <path d="M0 105h1200M0 210h1200M0 315h1200M0 420h1200M0 525h1200"/>
+    <path d="M150 0v630M300 0v630M450 0v630M600 0v630M750 0v630M900 0v630M1050 0v630"/>
+  </g>
+  <g transform="translate(120 191) scale(1.95)">
+    <g fill="none" stroke="#B87333" stroke-width="2" stroke-linecap="square" opacity="0.5">
+      <path d="M22 42V22h20"/>
+      <path d="M106 42V22H86"/>
+      <path d="M22 86v20h20"/>
+      <path d="M106 86v20H86"/>
+    </g>
+    <g fill="none" stroke="url(#copper)" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M40 46C50 24 78 24 88 46"/>
+      <path d="M40 46C34 60 34 76 40 90"/>
+      <path d="M88 46C94 60 94 76 88 90"/>
+      <path d="M50 70h28"/>
+    </g>
+    <circle cx="40" cy="46" r="6.5" fill="#E8B37A"/>
+    <circle cx="88" cy="46" r="6.5" fill="#D59255"/>
+    <circle cx="40" cy="90" r="6.5" fill="#D59255"/>
+    <circle cx="88" cy="90" r="6.5" fill="#B87333"/>
+  </g>
+  <text
+    x="420"
+    y="300"
+    fill="#F4F4F5"
+    font-family="Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif"
+    font-size="68"
+    font-weight="650"
+    letter-spacing="0.16em"
+  >ARCFRAME</text>
+  <text
+    x="420"
+    y="358"
+    fill="#A8ADB6"
+    font-family="Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif"
+    font-size="26"
+    font-weight="400"
+    letter-spacing="0.04em"
+  >Engineering control plane for Cursor</text>
+  <rect x="420" y="384" width="56" height="2" fill="#B87333" opacity="0.85"/>
+</svg>

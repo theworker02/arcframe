@@ -1,0 +1,10 @@
+﻿# Ignore sources and tooling when packaging the VSIX (keep media + dist)
+src/**
+**/*.ts
+!dist/**
+tsconfig.json
+vitest.config.*
+node_modules/**
+.gitignore
+**/*.map
+**/*.test.js

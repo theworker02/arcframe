@@ -1,0 +1,18 @@
+# Arcframe Docs
+
+> Official documentation for Arcframe: engineering control plane for Cursor with local-first repository intelligence.
+
+## Start here
+
+- [Overview](https://arcframe.dev/docs/): What Arcframe is
+- [Installation](https://arcframe.dev/docs/installation): Install and init
+- [Quick Start](https://arcframe.dev/docs/quick-start): First index, graph, and MCP
+- [MCP](https://arcframe.dev/docs/mcp): Cursor MCP server tools and resources
+- [Arc Index](https://arcframe.dev/docs/arc-index): Incremental repository index
+- [Arc Graph](https://arcframe.dev/docs/arc-graph): Dependency / import graph
+- [Impact](https://arcframe.dev/docs/impact): Blast radius and impact analysis
+- [SEO](https://arcframe.dev/docs/seo): Search positioning
+
+## Source
+
+- [GitHub](https://github.com/theworker02/arcframe)

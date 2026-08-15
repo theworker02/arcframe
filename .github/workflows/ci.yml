@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  build-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -r --filter=./packages/* --filter=./cli --filter=./servers/* run build
+      - run: pnpm -r --filter=./packages/* --filter=./cli --filter=./servers/* run typecheck
+      - run: pnpm -r --filter=./packages/* --filter=./cli --filter=./servers/* run test
+      - name: Dogfood CLI
+        run: |
+          node ./cli/dist/bin.js init --json
+          node ./cli/dist/bin.js status --json
+          node ./cli/dist/bin.js health --json
+          node ./cli/dist/bin.js validate --json
+          node ./cli/dist/bin.js doctor --json
+          node ./cli/dist/bin.js review --json
+          node ./cli/dist/bin.js impact packages/core/src/index.ts --json
+
+  fixture-smoke:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture:
+          - typescript-app
+          - nextjs-monorepo
+          - rust-workspace
+          - python-api
+          - go-service
+          - mixed-language-project
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -r --filter=./packages/* --filter=./cli run build
+      - name: Smoke fixture ${{ matrix.fixture }}
+        working-directory: fixtures/${{ matrix.fixture }}
+        run: |
+          node ../../cli/dist/bin.js init --json
+          node ../../cli/dist/bin.js status --json
+          node ../../cli/dist/bin.js index rebuild --json
+          node ../../cli/dist/bin.js graph stats --json
+          node ../../cli/dist/bin.js health --json
+          node ../../cli/dist/bin.js doctor --json
+
+  security-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm audit --prod || true

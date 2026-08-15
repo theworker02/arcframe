@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Arcframe">
+  <!-- Single-ink mark for stamps, etch, and constrained print -->
+  <g fill="none" stroke="#090A0C" stroke-width="2" stroke-linecap="square" opacity="0.55">
+    <path d="M22 42V22h20"/>
+    <path d="M106 42V22H86"/>
+    <path d="M22 86v20h20"/>
+    <path d="M106 86v20H86"/>
+  </g>
+  <g fill="none" stroke="#090A0C" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M40 46C50 24 78 24 88 46"/>
+    <path d="M40 46C34 60 34 76 40 90"/>
+    <path d="M88 46C94 60 94 76 88 90"/>
+    <path d="M50 70h28"/>
+  </g>
+  <circle cx="40" cy="46" r="6.5" fill="#090A0C"/>
+  <circle cx="88" cy="46" r="6.5" fill="#090A0C"/>
+  <circle cx="40" cy="90" r="6.5" fill="#090A0C"/>
+  <circle cx="88" cy="90" r="6.5" fill="#090A0C"/>
+</svg>
