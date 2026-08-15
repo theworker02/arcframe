@@ -30,7 +30,7 @@ See [DISTRIBUTION.md](https://github.com/theworker02/arcframe/blob/main/DISTRIBU
 
 ### Cursor Open Plugin
 
-Add `https://github.com/theworker02/arcframe` in Cursor **Plugins** (or clone locally). Repo root includes:
+Install from [cursor.directory/plugins/arcframe](https://cursor.directory/plugins/arcframe), or add `https://github.com/theworker02/arcframe` in Cursor **Plugins** (or clone locally). Repo root includes:
 
 - `rules/*.mdc`, `skills/*/SKILL.md`, `agents/*.md`, `commands/*.md`
 - `mcp.json` / `.mcp.json`, `plugin.json`, `.cursor-plugin/plugin.json`
