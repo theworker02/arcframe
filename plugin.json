@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "arcframe",
+  "version": "0.4.0",
+  "description": "Local-first engineering control plane for Cursor — Arc Index, Arc Graph, impact analysis, and evidence-backed MCP tools.",
+  "author": {
+    "name": "theworker02",
+    "url": "https://github.com/theworker02"
+  },
+  "homepage": "https://github.com/theworker02/arcframe",
+  "repository": "https://github.com/theworker02/arcframe",
+  "license": "MIT",
+  "keywords": [
+    "cursor",
+    "mcp",
+    "local-first",
+    "repository-intelligence",
+    "arc-index",
+    "arc-graph"
+  ]
+}

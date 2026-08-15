@@ -1,0 +1,8 @@
+---
+description: Unused-export findings are candidates requiring human confirmation.
+alwaysApply: true
+---
+
+# 15 — Dependency honesty
+
+Unused export detection is a candidate list. Require human confirmation before deletions.

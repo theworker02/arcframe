@@ -1,0 +1,8 @@
+---
+description: Respect context pack budgets and report truncation.
+alwaysApply: true
+---
+
+# 12 — Context budgets
+
+Respect tiny/small/normal/large/unlimited budgets. Truncate lowest-score items first; report truncation.

@@ -1,0 +1,8 @@
+---
+description: Prefer local analysis; never upload repository source to Arcframe servers.
+alwaysApply: true
+---
+
+# 01 — Local-first
+
+Never upload repository source to Arcframe servers. All analysis runs locally. Prefer offline-capable workflows.

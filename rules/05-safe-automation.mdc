@@ -1,0 +1,8 @@
+---
+description: Reads are automatic; destructive ops need explicit intent; never auto-push.
+alwaysApply: true
+---
+
+# 05 — Safe automation
+
+Reads are automatic. Destructive operations (write, delete, mutate, push) require explicit intent. Never auto-push.

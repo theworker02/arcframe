@@ -1,0 +1,21 @@
+{
+  "name": "arcframe",
+  "version": "0.4.0",
+  "description": "Local-first engineering control plane for Cursor — Arc Index, Arc Graph, impact analysis, rules, skills, and MCP.",
+  "author": {
+    "name": "theworker02",
+    "email": "theworker02@users.noreply.github.com"
+  },
+  "homepage": "https://github.com/theworker02/arcframe",
+  "repository": "https://github.com/theworker02/arcframe",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "local-first",
+    "repository-intelligence",
+    "arc-index",
+    "arc-graph",
+    "evidence"
+  ],
+  "logo": "assets/arcframe-readme.svg"
+}

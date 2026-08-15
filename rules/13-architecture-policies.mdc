@@ -1,0 +1,8 @@
+---
+description: Encode architectural constraints as rules validated with graph evidence.
+alwaysApply: true
+---
+
+# 13 — Architecture policies
+
+Encode architectural constraints as rules; validate with graph evidence when possible.

@@ -196,12 +196,12 @@ async function cmdInit(ctx: CliContext): Promise<void> {
       JSON.stringify(mcpConfig, null, 2),
     );
 
-    // Seed rules from repo pack when available
+    // Seed rules from repo pack when available (Open Plugins uses .mdc; keep .md compatible)
     const rulesSrc = join(runtime.root, "rules");
     if (existsSync(rulesSrc)) {
       const { readdirSync } = await import("node:fs");
       for (const file of readdirSync(rulesSrc)) {
-        if (!file.endsWith(".md")) continue;
+        if (!file.endsWith(".md") && !file.endsWith(".mdc")) continue;
         const dest = join(runtime.paths.rulesDir, file);
         if (!existsSync(dest)) {
           copyFileSync(join(rulesSrc, file), dest);
@@ -209,8 +209,8 @@ async function cmdInit(ctx: CliContext): Promise<void> {
       }
     } else {
       writeText(
-        join(runtime.paths.rulesDir, "01-local-first.md"),
-        `# Local-first\n\nNever upload source to Arcframe servers. Prefer evidence over assumptions.\n`,
+        join(runtime.paths.rulesDir, "01-local-first.mdc"),
+        `---\ndescription: Prefer local analysis; never upload repository source to Arcframe servers.\nalwaysApply: true\n---\n\n# Local-first\n\nNever upload source to Arcframe servers. Prefer evidence over assumptions.\n`,
       );
     }
 

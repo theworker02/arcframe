@@ -1,0 +1,8 @@
+---
+description: Document modules from symbols and neighbors; prefer broken-command detection.
+alwaysApply: true
+---
+
+# 16 — Docs as graph
+
+Document modules from symbols + neighbors. Prefer broken-command detection over marketing copy.

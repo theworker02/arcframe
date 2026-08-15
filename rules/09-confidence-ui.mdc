@@ -1,0 +1,8 @@
+---
+description: UI scores and impact views must attach confidence and sources.
+alwaysApply: true
+---
+
+# 09 — Confidence in UI
+
+Surfaces that show scores or impact must attach confidence and evidence sources.

@@ -4,10 +4,10 @@ title: Skills
 
 # Skills
 
-Markdown skills under `skills/`:
+Agent Skills under `skills/<name>/SKILL.md`:
 
-- Bug Investigator
-- Feature Builder
-- Refactor Planner
+- Bug Investigator (`skills/bug-investigator/`)
+- Feature Builder (`skills/feature-builder/`)
+- Refactor Planner (`skills/refactor-planner/`)
 
-Use with Arcflow prompts / MCP tools for evidence-first workflows.
+Use with Arcflow prompts / MCP tools for evidence-first workflows. Cursor Open Plugins discovers each folder that contains a `SKILL.md`.

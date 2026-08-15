@@ -1,0 +1,8 @@
+---
+description: Diff review should cite impacted graph nodes with confidence.
+alwaysApply: true
+---
+
+# 17 — Review discipline
+
+Diff review should cite impacted nodes from the graph and attach confidence.

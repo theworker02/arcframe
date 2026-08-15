@@ -1,0 +1,8 @@
+---
+description: Dogfood Arcframe on this repository before release claims.
+alwaysApply: true
+---
+
+# 10 — Dogfood
+
+`arc init/status/graph/impact/health/validate` must work on the Arcframe repository itself before release claims.

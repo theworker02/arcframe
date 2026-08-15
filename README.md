@@ -92,7 +92,8 @@ Thin surfaces, one engine. Local state lives under `.arcframe/` (SQLite, cache, 
 | `servers/mcp` | MCP tools, resources, prompts (`@arcframe/mcp`) |
 | `apps/cursor-plugin` | Cursor/VS Code sidebar + commands |
 | `apps/docs` | VitePress documentation site |
-| `rules/`, `skills/` | Engineering rule pack and skill prompts |
+| `rules/`, `skills/`, `agents/`, `commands/` | Open Plugins rule pack, skills, agents, commands (repo root) |
+| `mcp.json` / `plugin.json` / `.cursor-plugin/` | Open Plugins / Agent Plugins manifests + MCP |
 | `adapters/` | Language / framework / tool adapter layout |
 | `native/` | Optional Rust/Go accelerators (`arcframe-hashwalk`, `arcframe-gitmeta`) — see [native/README.md](./native/README.md) |
 
@@ -123,8 +124,9 @@ Arcframe is **GitHub-first** — all workspace packages are `"private": true` an
 | Surface | Install path |
 |---------|----------------|
 | CLI | Clone → `pnpm install && pnpm build` → `node ./cli/dist/bin.js` |
-| MCP | Same build → point Cursor at `servers/mcp/dist/index.js` |
-| Cursor plugin | Download VSIX from Releases, or `pnpm --filter ./apps/cursor-plugin package:vsix` → Install from VSIX |
+| MCP | Same build → point Cursor at `servers/mcp/dist/index.js` (or install as Open Plugin) |
+| Cursor Open Plugin | Install this GitHub repo in Cursor Plugins (discovers `rules/`, `skills/`, `mcp.json`, …) |
+| Cursor VSIX plugin | Download VSIX from Releases, or `pnpm --filter ./apps/cursor-plugin package:vsix` → Install from VSIX |
 | Releases | Tag `v*` artifacts (VSIX + node tarball) — see [DISTRIBUTION.md](./DISTRIBUTION.md) |
 
 Full distribution notes: **[DISTRIBUTION.md](./DISTRIBUTION.md)**.
@@ -164,6 +166,33 @@ pnpm dogfood   # init + status + health
 ---
 
 ## Cursor integration
+
+### Open Plugin (rules, skills, agents, commands, MCP)
+
+This repository follows the [Cursor Plugins](https://cursor.com/docs/reference/plugins) / [Agent Plugins](https://agent-plugins.org) layout at the **repo root** so Cursor can discover components when you add the GitHub repo as a plugin:
+
+| Path | Contents |
+|------|----------|
+| `.cursor-plugin/plugin.json` | Cursor Plugin manifest |
+| `plugin.json` | Agent Plugins 1.0 manifest |
+| `rules/*.mdc` | Engineering rule pack (20 rules) |
+| `skills/<name>/SKILL.md` | Bug Investigator, Feature Builder, Refactor Planner |
+| `agents/*.md` | Investigator / Implementer / Reviewer personas |
+| `commands/*.md` | Status, health, reindex, impact, context, investigate |
+| `mcp.json` / `.mcp.json` | stdio MCP → `servers/mcp/dist/index.js` (`${PLUGIN_ROOT}`) |
+
+**Install**
+
+1. Clone this repo (or use Cursor → Plugins → add from GitHub: `https://github.com/theworker02/arcframe`).
+2. In the Arcframe checkout: `pnpm install && pnpm build` (MCP requires `servers/mcp/dist/index.js`).
+3. Enable the plugin in Cursor. MCP starts with `ARCFRAME_ROOT=${PLUGIN_ROOT}` (indexes the plugin/repo root by default).
+4. To analyze a different project, set `ARCFRAME_ROOT` to that project path, or run `node ./cli/dist/bin.js init` there and use project MCP settings.
+
+Validate discovery locally: `pnpm sync:open-plugin` (or `node ./scripts/sync-open-plugin.mjs`).
+
+Root Open Plugin files are the **canonical** sources for rules/skills/agents/commands/MCP manifests. The activity-bar VSIX under `apps/cursor-plugin` is a separate UI surface.
+
+### Classic setup (clone + MCP / VSIX)
 
 1. Build the repo (`pnpm build`).
 2. Run `node ./cli/dist/bin.js init` in the target project (or this monorepo).
@@ -276,15 +305,15 @@ Returns dependents and dependencies from the graph with confidence labels. See [
 
 ## Rules
 
-Repo pack under [`rules/`](./rules/) (`01`–`20`): local-first, evidence, incremental analysis, one engine, safe automation, cross-platform, Cursor API honesty, secrets hygiene, and more.
+Repo pack under [`rules/`](./rules/) as Open Plugins **`.mdc`** files (`01`–`20`): local-first, evidence, incremental analysis, one engine, safe automation, cross-platform, Cursor API honesty, secrets hygiene, and more.
 
-On `arc init`, rules are copied into `.arcframe/rules/` when missing. See [apps/docs/rules.md](./apps/docs/rules.md).
+On `arc init`, rules are copied into `.arcframe/rules/` when missing (`.md` / `.mdc`). See [apps/docs/rules.md](./apps/docs/rules.md).
 
 ---
 
 ## Skills
 
-Markdown skills under [`skills/`](./skills/):
+Agent Skills under [`skills/<name>/SKILL.md`](./skills/):
 
 - Bug Investigator
 - Feature Builder

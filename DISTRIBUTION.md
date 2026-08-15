@@ -34,12 +34,35 @@ Built by .github/workflows/pages.yml with `ARCFRAME_SITE_URL=https://theworker02
 | Surface | How to install / run | Artifact |
 |---------|----------------------|----------|
 | **CLI** | From repo: `node ./cli/dist/bin.js` (or root `pnpm arc`) | GitHub Release `arcframe-node-v*.tar.gz` |
-| **MCP** | Local path in Cursor MCP settings | `servers/mcp/dist/index.js` after `pnpm build` (or Release tarball) |
-| **Cursor / VS Code plugin** | Install `.vsix` from Releases (or build locally) | `arcframe.vsix` |
+| **MCP** | Local path in Cursor MCP settings, or via Open Plugin `mcp.json` | `servers/mcp/dist/index.js` after `pnpm build` (or Release tarball) |
+| **Cursor Open Plugin** | Add GitHub repo `theworker02/arcframe` in Cursor Plugins | Root `rules/`, `skills/`, `agents/`, `commands/`, `mcp.json` |
+| **Cursor / VS Code VSIX** | Install `.vsix` from Releases (or build locally) | `arcframe.vsix` |
 | **Docs** | `pnpm --filter @arcframe/docs build` | Static VitePress site under `apps/docs/.vitepress/dist` |
 | **Dashboard** | `pnpm --filter @arcframe/dashboard build` | Static site under `apps/dashboard/dist` |
 
-### MCP (Cursor)
+### Open Plugin (Cursor)
+
+Repo root is the Open Plugins / Agent Plugins package (canonical layout):
+
+- Manifests: `.cursor-plugin/plugin.json`, `plugin.json`
+- Components: `rules/*.mdc`, `skills/*/SKILL.md`, `agents/*.md`, `commands/*.md`
+- MCP: `mcp.json` (mirrored to `.mcp.json`) using Agent Plugins schema and `${PLUGIN_ROOT}`
+
+```bash
+git clone https://github.com/theworker02/arcframe.git
+cd arcframe
+pnpm install
+pnpm build
+pnpm sync:open-plugin   # validates discovery paths; mirrors mcp.json → .mcp.json
+```
+
+In Cursor: **Plugins** → add from GitHub (`https://github.com/theworker02/arcframe`) or point at the local clone. Build is required before the MCP stdio server can start (`servers/mcp/dist/index.js`).
+
+Default MCP env sets `ARCFRAME_ROOT` to `${PLUGIN_ROOT}` (the installed plugin / this repo). Override when indexing a different workspace.
+
+Hooks (`hooks/hooks.json`) and `.lsp.json` are intentionally omitted (no Arcframe hook scripts or LSP yet).
+
+### MCP (Cursor settings JSON)
 
 ```json
 {
@@ -53,7 +76,7 @@ Built by .github/workflows/pages.yml with `ARCFRAME_SITE_URL=https://theworker02
 }
 ```
 
-There is no `npx @arcframe/mcp` / registry package. Prefer clone + build, or a Release tarball that includes `servers/mcp/dist` and workspace package `dist` folders.
+There is no `npx @arcframe/mcp` / registry package. Prefer clone + build, Open Plugin install, or a Release tarball that includes `servers/mcp/dist` and workspace package `dist` folders.
 
 ### Plugin (VSIX)
 

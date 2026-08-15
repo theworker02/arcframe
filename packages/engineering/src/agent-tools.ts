@@ -1101,7 +1101,10 @@ export function rulesApplicable(
   if (!dirExists(rulesDir)) {
     return { path: normalized, applicable, confidence: "confirmed" };
   }
-  for (const file of readdirSync(rulesDir).filter((f) => f.endsWith(".md"))) {
+  const ruleFiles = readdirSync(rulesDir).filter(
+    (f) => f.endsWith(".md") || f.endsWith(".mdc") || f.endsWith(".markdown"),
+  );
+  for (const file of ruleFiles) {
     const content = readText(join(rulesDir, file));
     const lower = content.toLowerCase();
     const reasons: string[] = [];
@@ -1136,7 +1139,7 @@ export function rulesApplicable(
   }
   // If nothing matched, include always-on short rules heuristically
   if (!applicable.length) {
-    for (const file of readdirSync(rulesDir).filter((f) => f.endsWith(".md")).slice(0, 5)) {
+    for (const file of ruleFiles.slice(0, 5)) {
       const content = readText(join(rulesDir, file));
       if (/local-first|evidence|confidence/i.test(content)) {
         applicable.push({

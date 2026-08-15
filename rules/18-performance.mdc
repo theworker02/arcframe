@@ -1,0 +1,8 @@
+---
+description: Only report measured timings or confirmed index metadata.
+alwaysApply: true
+---
+
+# 18 — Performance claims
+
+Only report measured timings or confirmed index metadata. No fake metrics.
