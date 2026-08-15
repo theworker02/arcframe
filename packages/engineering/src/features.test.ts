@@ -113,3 +113,36 @@ describe("explainCommand / detectPackageScripts", () => {
     expect(detected.byCategory.test).toBeGreaterThanOrEqual(1);
   });
 });
+
+describe("findBrokenDocCommands", () => {
+  it("does not treat mermaid closing fences as shell blocks", async () => {
+    const { findBrokenDocCommands } = await import("./ops.js");
+    const dir = mkdtempSync(join(tmpdir(), "arc-docs-"));
+    writeFileSync(
+      join(dir, "README.md"),
+      [
+        "# Demo",
+        "",
+        "```mermaid",
+        "flowchart LR",
+        "  A --> B",
+        "```",
+        "",
+        "| Surface | Install path |",
+        "|---------|----------------|",
+        "| CLI | Clone → `pnpm build` → `node ./cli/dist/bin.js` |",
+        "",
+        "```bash",
+        "node ./cli/dist/bin.js init",
+        "```",
+        "",
+      ].join("\n"),
+    );
+    mkdirSync(join(dir, "cli", "dist"), { recursive: true });
+    writeFileSync(join(dir, "cli", "dist", "bin.js"), "console.log('ok')\n");
+
+    const result = findBrokenDocCommands(dir);
+    expect(result.broken).toEqual([]);
+    expect(result.scanned).toBe(1);
+  });
+});

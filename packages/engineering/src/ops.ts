@@ -444,7 +444,9 @@ export function findBrokenDocCommands(
 
   const broken: Array<{ file: string; command: string; reason: string }> = [];
   let scanned = 0;
-  const fenceRe = /```(?:bash|sh|shell|powershell|pwsh|console)?\n([\s\S]*?)```/gi;
+  // Require an explicit shell language tag. Bare ``` fences (e.g. closing mermaid)
+  // must not be treated as shell or they swallow following markdown (tables, prose).
+  const fenceRe = /```(?:bash|sh|shell|powershell|pwsh|console)\r?\n([\s\S]*?)```/gi;
 
   for (const abs of mdFiles) {
     let content: string;
@@ -460,6 +462,8 @@ export function findBrokenDocCommands(
       for (const line of block.split(/\r?\n/)) {
         const trimmed = line.trim();
         if (!trimmed || trimmed.startsWith("#") || trimmed.startsWith("//")) continue;
+        // Skip markdown tables / prose accidentally left in fences
+        if (trimmed.startsWith("|") || trimmed.startsWith("---")) continue;
         // Strip prompts
         const cmd = trimmed.replace(/^\$\s+/, "").replace(/^>\s+/, "");
         if (!cmd) continue;
@@ -508,10 +512,12 @@ export function findBrokenDocCommands(
             });
           }
         }
-        // Dead relative script refs
+        // Dead relative script refs (strip trailing markdown punctuation / backticks)
         const scriptRef = /(?:node|pnpm|npm|npx)\s+(\.\/[^\s]+)/.exec(cmd);
         if (scriptRef) {
-          const pathPart = scriptRef[1].replace(/^\.\//, "");
+          const pathPart = scriptRef[1]
+            .replace(/^\.\//, "")
+            .replace(/[`'".,;:)\]]+$/g, "");
           // resolve relative to doc file dir or root
           const candidates = [
             join(root, pathPart),
@@ -521,7 +527,7 @@ export function findBrokenDocCommands(
             broken.push({
               file: rel,
               command: cmd,
-              reason: `path not found: ${scriptRef[1]}`,
+              reason: `path not found: ./${pathPart}`,
             });
           }
         }
