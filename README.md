@@ -20,6 +20,7 @@
   <a href="https://theworker02.github.io/arcframe/"><img src="https://img.shields.io/badge/site-GitHub%20Pages-222.svg" alt="Site" /></a>
   <a href="https://theworker02.github.io/arcframe/docs/"><img src="https://img.shields.io/badge/docs-VitePress-0A7EA4.svg" alt="Docs" /></a>
   <a href="https://github.com/theworker02/arcframe/releases"><img src="https://img.shields.io/github/v/release/theworker02/arcframe?display_name=tag&amp;label=release" alt="Releases" /></a>
+  <a href="https://cursor.directory/plugins/arcframe"><img src="https://img.shields.io/badge/Cursor%20Directory-plugin-000000.svg" alt="Cursor Directory" /></a>
 </p>
 
 <p align="center">
@@ -28,6 +29,8 @@
   <a href="https://theworker02.github.io/arcframe">Site</a>
   &nbsp;·&nbsp;
   <a href="https://theworker02.github.io/arcframe/docs/">Docs</a>
+  &nbsp;·&nbsp;
+  <a href="https://cursor.directory/plugins/arcframe">Cursor Directory</a>
   &nbsp;·&nbsp;
   <a href="https://github.com/theworker02/arcframe/releases">Releases</a>
   &nbsp;·&nbsp;
@@ -125,7 +128,7 @@ Arcframe is **GitHub-first** — all workspace packages are `"private": true` an
 |---------|----------------|
 | CLI | Clone → `pnpm install && pnpm build` → `node ./cli/dist/bin.js` |
 | MCP | Same build → point Cursor at `servers/mcp/dist/index.js` (or install as Open Plugin) |
-| Cursor Open Plugin | Install this GitHub repo in Cursor Plugins (discovers `rules/`, `skills/`, `mcp.json`, …) |
+| Cursor Open Plugin | [cursor.directory/plugins/arcframe](https://cursor.directory/plugins/arcframe) or add this GitHub repo in Cursor Plugins (discovers `rules/`, `skills/`, `mcp.json`, …) |
 | Cursor VSIX plugin | Download VSIX from Releases, or `pnpm --filter ./apps/cursor-plugin package:vsix` → Install from VSIX |
 | Releases | Tag `v*` artifacts (VSIX + node tarball) — see [DISTRIBUTION.md](./DISTRIBUTION.md) |
 
@@ -167,6 +170,8 @@ pnpm dogfood   # init + status + health
 
 ## Cursor integration
 
+Official listing: **[cursor.directory/plugins/arcframe](https://cursor.directory/plugins/arcframe)**
+
 ### Open Plugin (rules, skills, agents, commands, MCP)
 
 This repository follows the [Cursor Plugins](https://cursor.com/docs/reference/plugins) / [Agent Plugins](https://agent-plugins.org) layout at the **repo root** so Cursor can discover components when you add the GitHub repo as a plugin:
@@ -183,7 +188,7 @@ This repository follows the [Cursor Plugins](https://cursor.com/docs/reference/p
 
 **Install**
 
-1. Clone this repo (or use Cursor → Plugins → add from GitHub: `https://github.com/theworker02/arcframe`).
+1. Install from **[cursor.directory/plugins/arcframe](https://cursor.directory/plugins/arcframe)**, or clone / add from GitHub: `https://github.com/theworker02/arcframe`.
 2. In the Arcframe checkout: `pnpm install && pnpm build` (MCP requires `servers/mcp/dist/index.js`).
 3. Enable the plugin in Cursor. MCP starts with `ARCFRAME_ROOT=${PLUGIN_ROOT}` (indexes the plugin/repo root by default).
 4. To analyze a different project, set `ARCFRAME_ROOT` to that project path, or run `node ./cli/dist/bin.js init` there and use project MCP settings.
