@@ -30,7 +30,7 @@ See [DISTRIBUTION.md](https://github.com/theworker02/arcframe/blob/main/DISTRIBU
 
 ### Cursor Open Plugin
 
-Install from [cursor.directory/c/magnexis](https://cursor.directory/c/magnexis), or add `https://github.com/theworker02/arcframe` in Cursor **Plugins** (or clone locally). Repo root includes:
+Install from [cursor.directory/u/theworker02](https://cursor.directory/u/theworker02), or add `https://github.com/theworker02/arcframe` in Cursor **Plugins** (or clone locally). Repo root includes:
 
 - `rules/*.mdc`, `skills/*/SKILL.md`, `agents/*.md`, `commands/*.md`
 - `mcp.json` / `.mcp.json`, `plugin.json`, `.cursor-plugin/plugin.json`
