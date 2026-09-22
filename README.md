@@ -25,15 +25,15 @@
 
 <p align="center">
   <a href="https://github.com/theworker02/arcframe">Repo</a>
-  &nbsp;Â·&nbsp;
+  &nbsp;Ã‚Â·&nbsp;
   <a href="https://theworker02.github.io/arcframe">Site</a>
-  &nbsp;Â·&nbsp;
+  &nbsp;Ã‚Â·&nbsp;
   <a href="https://theworker02.github.io/arcframe/docs/">Docs</a>
-  &nbsp;Â·&nbsp;
+  &nbsp;Ã‚Â·&nbsp;
   <a href="https://cursor.directory/u/theworker02">Cursor Directory</a>
-  &nbsp;Â·&nbsp;
+  &nbsp;Ã‚Â·&nbsp;
   <a href="https://github.com/theworker02/arcframe/releases">Releases</a>
-  &nbsp;Â·&nbsp;
+  &nbsp;Ã‚Â·&nbsp;
   <a href="https://github.com/sponsors/theworker02">Sponsors</a>
 </p>
 
@@ -43,7 +43,7 @@
 
 Arcframe is infrastructure for serious engineering work inside Cursor: a **control plane** over your repository, not a chat wrapper.
 
-It answers operational questions with labeled evidence â€” *Confirmed*, *Strongly inferred*, *Weakly inferred*, *Unknown* â€” instead of unverifiable certainty. The same engines power the CLI, MCP server, Cursor UI, and workflow prompts so agents and humans share one source of truth.
+It answers operational questions with labeled evidence Ã¢â‚¬â€ *Confirmed*, *Strongly inferred*, *Weakly inferred*, *Unknown* Ã¢â‚¬â€ instead of unverifiable certainty. The same engines power the CLI, MCP server, Cursor UI, and workflow prompts so agents and humans share one source of truth.
 
 | Principle | Practice |
 |-----------|----------|
@@ -60,8 +60,8 @@ It answers operational questions with labeled evidence â€” *Confirmed*, *St
 ```mermaid
 flowchart LR
   subgraph Surfaces
-    CLI["CLI Â· arc / arcframe"]
-    MCP["MCP Â· servers/mcp"]
+    CLI["CLI Ã‚Â· arc / arcframe"]
+    MCP["MCP Ã‚Â· servers/mcp"]
     Plugin["Cursor plugin"]
   end
   subgraph Engine["Shared engine"]
@@ -71,7 +71,7 @@ flowchart LR
     Context["context"]
     Memory["memory"]
     Eng["engineering"]
-    Store["storage Â· SQLite"]
+    Store["storage Ã‚Â· SQLite"]
   end
   CLI --> Core
   MCP --> Core
@@ -91,14 +91,14 @@ Thin surfaces, one engine. Local state lives under `.arcframe/` (SQLite, cache, 
 | `@arcframe/context` | Budgeted context packs |
 | `@arcframe/engineering` | Git inspect, health, doctor, test/build/validate/review/changes |
 | `@arcframe/workflows` | Arc Flows |
-| `cli` | `arc` / `arcframe` binaries â†’ `cli/dist/bin.js` |
+| `cli` | `arc` / `arcframe` binaries Ã¢â€ â€™ `cli/dist/bin.js` |
 | `servers/mcp` | MCP tools, resources, prompts (`@arcframe/mcp`) |
 | `apps/cursor-plugin` | Cursor/VS Code sidebar + commands |
 | `apps/docs` | VitePress documentation site |
 | `rules/`, `skills/`, `agents/`, `commands/` | Open Plugins rule pack, skills, agents, commands (repo root) |
 | `mcp.json` / `plugin.json` / `.cursor-plugin/` | Open Plugins / Agent Plugins manifests + MCP |
 | `adapters/` | Language / framework / tool adapter layout |
-| `native/` | Optional Rust/Go accelerators (`arcframe-hashwalk`, `arcframe-gitmeta`) â€” see [native/README.md](./native/README.md) |
+| `native/` | Optional Rust/Go accelerators (`arcframe-hashwalk`, `arcframe-gitmeta`) Ã¢â‚¬â€ see [native/README.md](./native/README.md) |
 
 TypeScript remains the control plane. Native binaries are optional: discovered via `ARCFRAME_NATIVE_DIR`, `native/bin/`, crate build outputs, or `PATH`, with graceful JS fallback when missing (`pnpm native:build`).
 
@@ -106,31 +106,31 @@ TypeScript remains the control plane. Native binaries are optional: discovered v
 
 ## Features
 
-- **Arc Index** â€” incremental file/symbol index with watch (native + polling fallback)
-- **Arc Graph** â€” `IMPORTS`, `DEPENDS_ON`, `CONTAINS`, `TESTS`, `ROUTES_TO`, and related edges with confidence
-- **Budgeted context packs** â€” `tiny` â†’ `unlimited` token budgets with scored, reasoned items
-- **Arc Memory** â€” notes, ADRs/decisions, sessions, and tasks in local SQLite
-- **Impact analysis** â€” dependents/dependencies from the graph for a file or node
-- **Engineering ops** â€” doctor, health, validate, test, build, review, changes, API compatibility, docs checks
-- **MCP server** â€” **136** precise tools, plus resources and prompts (not a single dump-everything tool)
-- **Rules + skills** â€” repo rule pack and evidence-first skill prompts
-- **Language adapters** â€” TypeScript, JavaScript, Rust, Python, Go, plus framework route heuristics
+- **Arc Index** Ã¢â‚¬â€ incremental file/symbol index with watch (native + polling fallback)
+- **Arc Graph** Ã¢â‚¬â€ `IMPORTS`, `DEPENDS_ON`, `CONTAINS`, `TESTS`, `ROUTES_TO`, and related edges with confidence
+- **Budgeted context packs** Ã¢â‚¬â€ `tiny` Ã¢â€ â€™ `unlimited` token budgets with scored, reasoned items
+- **Arc Memory** Ã¢â‚¬â€ notes, ADRs/decisions, sessions, and tasks in local SQLite
+- **Impact analysis** Ã¢â‚¬â€ dependents/dependencies from the graph for a file or node
+- **Engineering ops** Ã¢â‚¬â€ doctor, health, validate, test, build, review, changes, API compatibility, docs checks
+- **MCP server** Ã¢â‚¬â€ **136** precise tools, plus resources and prompts (not a single dump-everything tool)
+- **Rules + skills** Ã¢â‚¬â€ repo rule pack and evidence-first skill prompts
+- **Language adapters** Ã¢â‚¬â€ TypeScript, JavaScript, Rust, Python, Go, plus framework route heuristics
 
 ---
 
 ## Install
 
-Live site: [https://theworker02.github.io/arcframe](https://theworker02.github.io/arcframe) Â· Docs: [https://theworker02.github.io/arcframe/docs/](https://theworker02.github.io/arcframe/docs/)
+Live site: [https://theworker02.github.io/arcframe](https://theworker02.github.io/arcframe) Ã‚Â· Docs: [https://theworker02.github.io/arcframe/docs/](https://theworker02.github.io/arcframe/docs/)
 
-Arcframe is **GitHub-first** â€” all workspace packages are `"private": true` and are **never** published to the npm registry. Do not use `npm install -g @arcframe/â€¦`.
+Arcframe is **GitHub-first** Ã¢â‚¬â€ all workspace packages are `"private": true` and are **never** published to the npm registry. Do not use `npm install -g @arcframe/Ã¢â‚¬Â¦`.
 
 | Surface | Install path |
 |---------|----------------|
-| CLI | Clone â†’ `pnpm install && pnpm build` â†’ `node ./cli/dist/bin.js` |
-| MCP | Same build â†’ point Cursor at `servers/mcp/dist/index.js` (or install as Open Plugin) |
-| Cursor Open Plugin | [cursor.directory/u/theworker02](https://cursor.directory/u/theworker02) or add this GitHub repo in Cursor Plugins (discovers `rules/`, `skills/`, `mcp.json`, â€¦) |
-| Cursor VSIX plugin | Download VSIX from Releases, or `pnpm --filter ./apps/cursor-plugin package:vsix` â†’ Install from VSIX |
-| Releases | Tag `v*` artifacts (VSIX + node tarball) â€” see [DISTRIBUTION.md](./DISTRIBUTION.md) |
+| CLI | Clone Ã¢â€ â€™ `pnpm install && pnpm build` Ã¢â€ â€™ `node ./cli/dist/bin.js` |
+| MCP | Same build Ã¢â€ â€™ point Cursor at `servers/mcp/dist/index.js` (or install as Open Plugin) |
+| Cursor Open Plugin | [cursor.directory/u/theworker02](https://cursor.directory/u/theworker02) or add this GitHub repo in Cursor Plugins (discovers `rules/`, `skills/`, `mcp.json`, Ã¢â‚¬Â¦) |
+| Cursor VSIX plugin | Download VSIX from Releases, or `pnpm --filter ./apps/cursor-plugin package:vsix` Ã¢â€ â€™ Install from VSIX |
+| Releases | Tag `v*` artifacts (VSIX + node tarball) Ã¢â‚¬â€ see [DISTRIBUTION.md](./DISTRIBUTION.md) |
 
 Full distribution notes: **[DISTRIBUTION.md](./DISTRIBUTION.md)**.
 
@@ -158,7 +158,7 @@ pnpm arc -- help
 node ./cli/dist/bin.js <command> [--json] [--cwd <path>]
 ```
 
-Root `package.json` also exposes `bin` names `arc` and `arcframe` â†’ `./cli/dist/bin.js`.
+Root `package.json` also exposes `bin` names `arc` and `arcframe` Ã¢â€ â€™ `./cli/dist/bin.js`.
 
 Dogfood shortcut:
 
@@ -184,7 +184,7 @@ This repository follows the [Cursor Plugins](https://cursor.com/docs/reference/p
 | `skills/<name>/SKILL.md` | Bug Investigator, Feature Builder, Refactor Planner |
 | `agents/*.md` | Investigator / Implementer / Reviewer personas |
 | `commands/*.md` | Status, health, reindex, impact, context, investigate |
-| `mcp.json` / `.mcp.json` | stdio MCP â†’ `servers/mcp/dist/index.js` (`${PLUGIN_ROOT}`) |
+| `mcp.json` / `.mcp.json` | stdio MCP Ã¢â€ â€™ `servers/mcp/dist/index.js` (`${PLUGIN_ROOT}`) |
 
 **Install**
 
@@ -204,7 +204,7 @@ Root Open Plugin files are the **canonical** sources for rules/skills/agents/com
 3. Wire MCP using `.arcframe/mcp.json` (written on init) or your Cursor MCP settings.
 4. Optionally build/load `apps/cursor-plugin` for the activity-bar sidebar (`Status`, `Health`, `Rebuild Index`).
 
-Cursor public APIs only â€” see [docs/cursor-api-limitations.md](./docs/cursor-api-limitations.md).
+Cursor public APIs only Ã¢â‚¬â€ see [docs/cursor-api-limitations.md](./docs/cursor-api-limitations.md).
 
 ---
 
@@ -236,9 +236,9 @@ Or via the root script after build: `pnpm dev:mcp`.
 
 The tool surface is expansive and precise: repository, symbols, graph, impact, context, memory, decisions, sessions, tasks, git, tests, validate, review, changes, debug, deps, command intelligence, ownership, workspace/monorepo, adapters, flows, rules, env (names only, never values), db schema, CI/release helpers, unified search, security patterns, and performance signals. Agents call the right tool rather than a monolithic dump.
 
-Resources use the `arcframe://â€¦` URI scheme; prompts cover investigate / implement / refactor / review flows.
+Resources use the `arcframe://Ã¢â‚¬Â¦` URI scheme; prompts cover investigate / implement / refactor / review flows.
 
-Details: [docs/mcp.md](./docs/mcp.md) Â· [apps/docs/mcp.md](./apps/docs/mcp.md)
+Details: [docs/mcp.md](./docs/mcp.md) Ã‚Â· [apps/docs/mcp.md](./apps/docs/mcp.md)
 
 ---
 
@@ -250,7 +250,7 @@ Incremental file/symbol index backed by SQLite content hashes.
 node ./cli/dist/bin.js index              # incremental
 node ./cli/dist/bin.js index rebuild      # full
 node ./cli/dist/bin.js index explain <file>
-node ./cli/dist/bin.js index watch        # FS events â†’ rebuild + graph
+node ./cli/dist/bin.js index watch        # FS events Ã¢â€ â€™ rebuild + graph
 ```
 
 Watch uses native FS events where available, with a polling/hybrid fallback (Linux prefers poll/hybrid). See [apps/docs/arc-index.md](./apps/docs/arc-index.md).
@@ -273,7 +273,7 @@ See [apps/docs/arc-graph.md](./apps/docs/arc-graph.md).
 
 ## Arc Context
 
-Budgeted packs for agent and human consumption: `tiny` Â· `small` Â· `normal` Â· `large` Â· `unlimited`.
+Budgeted packs for agent and human consumption: `tiny` Ã‚Â· `small` Ã‚Â· `normal` Ã‚Â· `large` Ã‚Â· `unlimited`.
 
 ```bash
 node ./cli/dist/bin.js context "createRuntime" --budget small
@@ -310,7 +310,7 @@ Returns dependents and dependencies from the graph with confidence labels. See [
 
 ## Rules
 
-Repo pack under [`rules/`](./rules/) as Open Plugins **`.mdc`** files (`01`â€“`20`): local-first, evidence, incremental analysis, one engine, safe automation, cross-platform, Cursor API honesty, secrets hygiene, and more.
+Repo pack under [`rules/`](./rules/) as Open Plugins **`.mdc`** files (`01`Ã¢â‚¬â€œ`20`): local-first, evidence, incremental analysis, one engine, safe automation, cross-platform, Cursor API honesty, secrets hygiene, and more.
 
 On `arc init`, rules are copied into `.arcframe/rules/` when missing (`.md` / `.mdc`). See [apps/docs/rules.md](./apps/docs/rules.md).
 
@@ -336,13 +336,13 @@ node ./cli/dist/bin.js <command> [--json] [--cwd <path>]
 
 | Area | Commands |
 |------|----------|
-| Core | `init` Â· `status` Â· `doctor` Â· `health` Â· `validate` |
-| Intelligence | `index [rebuild\|status\|explain\|clean\|watch]` Â· `graph` Â· `impact` Â· `search` Â· `adapters` |
-| Context & memory | `context` Â· `memory` Â· `decision` Â· `session` Â· `task` |
-| Engineering | `git` Â· `changes` Â· `test` Â· `build` Â· `review` Â· `api` Â· `docs` Â· `deps` Â· `flow` |
-| Ops | `config` Â· `cache` Â· `clean` Â· `version` |
+| Core | `init` Ã‚Â· `status` Ã‚Â· `doctor` Ã‚Â· `health` Ã‚Â· `validate` |
+| Intelligence | `index [rebuild\|status\|explain\|clean\|watch]` Ã‚Â· `graph` Ã‚Â· `impact` Ã‚Â· `search` Ã‚Â· `adapters` |
+| Context & memory | `context` Ã‚Â· `memory` Ã‚Â· `decision` Ã‚Â· `session` Ã‚Â· `task` |
+| Engineering | `git` Ã‚Â· `changes` Ã‚Â· `test` Ã‚Â· `build` Ã‚Â· `review` Ã‚Â· `api` Ã‚Â· `docs` Ã‚Â· `deps` Ã‚Â· `flow` |
+| Ops | `config` Ã‚Â· `cache` Ã‚Â· `clean` Ã‚Â· `version` |
 
-Full reference: [docs/cli.md](./docs/cli.md) Â· [apps/docs/cli.md](./apps/docs/cli.md)
+Full reference: [docs/cli.md](./docs/cli.md) Ã‚Â· [apps/docs/cli.md](./apps/docs/cli.md)
 
 ---
 
@@ -365,7 +365,7 @@ Fixture smoke coverage includes `typescript-app`, `nextjs-monorepo`, `rust-works
 - Git push is never automatic
 - Destructive operations require explicit intent
 
-Policy and reporting: [SECURITY.md](./SECURITY.md) Â· [apps/docs/security.md](./apps/docs/security.md)
+Policy and reporting: [SECURITY.md](./SECURITY.md) Ã‚Â· [apps/docs/security.md](./apps/docs/security.md)
 
 ---
 
@@ -384,9 +384,9 @@ Created on init at `.arcframe/config.yaml` (schema in `@arcframe/core`):
 | Key | Purpose |
 |-----|---------|
 | `ignoreFile` | Default `.arcframeignore` |
-| `logLevel` | `trace` â€¦ `fatal` |
+| `logLevel` | `trace` Ã¢â‚¬Â¦ `fatal` |
 | `index.incremental` / `index.watch` | Index behavior |
-| `context.defaultBudget` | `tiny` â€¦ `unlimited` |
+| `context.defaultBudget` | `tiny` Ã¢â‚¬Â¦ `unlimited` |
 | `mcp.enabled` | MCP surface toggle |
 | `permissions.allowDestructive` | Default `false` |
 | `permissions.autoPush` | Always treated as unsafe; product rule is never auto-push |
@@ -403,7 +403,7 @@ Env for MCP: `ARCFRAME_ROOT` = project root.
 
 ## Extension
 
-[`apps/cursor-plugin`](./apps/cursor-plugin) â€” Cursor/VS Code extension:
+[`apps/cursor-plugin`](./apps/cursor-plugin) Ã¢â‚¬â€ Cursor/VS Code extension:
 
 - Activity-bar **Arcframe** sidebar (webview)
 - Commands: Status, Health, Rebuild Index, Open Sidebar
@@ -416,8 +416,8 @@ Build with the package's `pnpm --filter` / `tsc` scripts after monorepo install.
 
 | Resource | Location |
 |----------|----------|
-| VitePress site | `pnpm --filter @arcframe/docs dev` Â· `pnpm --filter @arcframe/docs build` |
-| Overview â†’ install â†’ architecture | [Live docs](https://theworker02.github.io/arcframe/docs/) ([source](./apps/docs/)) |
+| VitePress site | `pnpm --filter @arcframe/docs dev` Ã‚Â· `pnpm --filter @arcframe/docs build` |
+| Overview Ã¢â€ â€™ install Ã¢â€ â€™ architecture | [Live docs](https://theworker02.github.io/arcframe/docs/) ([source](./apps/docs/)) |
 | Markdown mirrors | [`docs/`](./docs/) |
 | Cursor API limits | [`docs/cursor-api-limitations.md`](./docs/cursor-api-limitations.md) |
 | Roadmap | [`ROADMAP.md`](./ROADMAP.md) |
@@ -425,15 +425,15 @@ Build with the package's `pnpm --filter` / `tsc` scripts after monorepo install.
 | Contributing | [`CONTRIBUTING.md`](./CONTRIBUTING.md) |
 | Code of conduct | [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md) |
 
-Brand assets (copper on charcoal): [`assets/arcframe-*.svg`](./assets/) â€” mark, horizontal lockup, light/dark, monochrome, favicon, social card. README uses [`assets/arcframe-readme.svg`](./assets/arcframe-readme.svg) (transparent, light-friendly). SEO notes: [`docs/seo.md`](./docs/seo.md) Â· [`apps/docs/seo.md`](./apps/docs/seo.md).
+Brand assets (copper on charcoal): [`assets/arcframe-*.svg`](./assets/) Ã¢â‚¬â€ mark, horizontal lockup, light/dark, monochrome, favicon, social card. README uses [`assets/arcframe-readme.svg`](./assets/arcframe-readme.svg) (transparent, light-friendly). SEO notes: [`docs/seo.md`](./docs/seo.md) Ã‚Â· [`apps/docs/seo.md`](./apps/docs/seo.md).
 
 ---
 
 ## Roadmap
 
-Honest status toward v1.0 is tracked in [`ROADMAP.md`](./ROADMAP.md). Shipped through the 0.4 line includes local-first core, incremental index/graph, CLI + MCP, engineering ops (`test` / `build` / `validate` / `review` / â€¦), cross-platform watch with polling fallback, framework depth, fixture CI matrix, and VitePress docs.
+Honest status toward v1.0 is tracked in [`ROADMAP.md`](./ROADMAP.md). Shipped through the 0.4 line includes local-first core, incremental index/graph, CLI + MCP, engineering ops (`test` / `build` / `validate` / `review` / Ã¢â‚¬Â¦), cross-platform watch with polling fallback, framework depth, fixture CI matrix, and VitePress docs.
 
-**Non-goals:** hosted cloud that uploads source Â· automatic git push Â· undocumented Cursor private APIs.
+**Non-goals:** hosted cloud that uploads source Ã‚Â· automatic git push Ã‚Â· undocumented Cursor private APIs.
 
 ---
 
@@ -452,7 +452,7 @@ Principles and PR expectations: [CONTRIBUTING.md](./CONTRIBUTING.md). Convention
 
 ## Support
 
-Sponsors: [github.com/sponsors/theworker02](https://github.com/sponsors/theworker02) Â· [thanks.dev](https://thanks.dev/u/gh/theworker02)
+Sponsors: [github.com/sponsors/theworker02](https://github.com/sponsors/theworker02) Ã‚Â· [thanks.dev](https://thanks.dev/u/gh/theworker02)
 
 Funding config: [`.github/FUNDING.yml`](./.github/FUNDING.yml)
 
@@ -460,7 +460,7 @@ Funding config: [`.github/FUNDING.yml`](./.github/FUNDING.yml)
 
 ## License
 
-**Source-available proprietary** — evaluation under [LICENSE](./LICENSE); commercial / production use via [COMMERCIAL.md](./COMMERCIAL.md). See [LICENSE_TRANSITION_NOTICE.md](./LICENSE_TRANSITION_NOTICE.md) and [NOTICE](./NOTICE).
+**Source-available proprietary** â€” evaluation under [LICENSE](./LICENSE); commercial / production use via [COMMERCIAL.md](./COMMERCIAL.md). See [LICENSE_TRANSITION_NOTICE.md](./LICENSE_TRANSITION_NOTICE.md) and [NOTICE](./NOTICE).
 
 
 ---
@@ -468,3 +468,7 @@ Funding config: [`.github/FUNDING.yml`](./.github/FUNDING.yml)
 ## License & acquisition
 
 This project is **proprietary**. Production use, redistribution, and commercial deployment require a written commercial license or completed acquisition. See [LICENSE](./LICENSE) and [ACQUISITION.md](./ACQUISITION.md). Contact [@theworker02](https://github.com/theworker02).
+
+## Acquisition diligence
+
+Buyer-facing diligence materials live in [docs/acquisition/](./docs/acquisition/). Commercial licensing contact path: [COMMERCIAL.md](./COMMERCIAL.md).
