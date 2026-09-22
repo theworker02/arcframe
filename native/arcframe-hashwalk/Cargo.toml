@@ -3,7 +3,8 @@ name = "arcframe-hashwalk"
 version = "0.1.0"
 edition = "2021"
 description = "Parallel filesystem walk + content hashing for Arcframe index invalidation"
-license = "MIT"
+license = "LicenseRef-Proprietary"
+license-file = "LICENSE"
 publish = false
 
 [[bin]]
