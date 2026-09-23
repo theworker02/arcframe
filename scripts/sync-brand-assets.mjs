@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Sync root assets/ into app surfaces (docs, plugin, dashboard).
  * Source of truth: assets/arcframe-*
  * PNG icons must already exist (arcframe-icon-128/256.png); generate with sharp if missing.
