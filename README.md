@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="docs/logo.svg" alt="arcframe official logo" width="128" height="128">
+</p>
+
+<p align="center">
   <img src="assets/arcframe-readme.svg" alt="Arcframe" width="420" />
 </p>
 
@@ -472,3 +476,16 @@ This project is **proprietary**. Production use, redistribution, and commercial 
 ## Acquisition diligence
 
 Buyer-facing diligence materials live in [docs/acquisition/](./docs/acquisition/). Commercial licensing contact path: [COMMERCIAL.md](./COMMERCIAL.md).
+
+## Badges & release notes
+
+| Badge | Meaning |
+| --- | --- |
+| docs live | Public documentation / Pages surface for `arcframe` |
+| release v1.0.0 | Stable tagged release with narrative notes |
+| license | See repository `LICENSE` for terms |
+| status maintained | Actively kept in the @theworker02 portfolio |
+| version 1.0.0 | Documentation and brand completeness milestone |
+| pages enabled | Site intended at `https://theworker02.github.io/arcframe/` |
+
+Detailed narrative for the stable line lives in [CHANGELOG.md](./CHANGELOG.md) and the [v1.0.0 GitHub Release](https://github.com/theworker02/arcframe/releases/tag/v1.0.0).
