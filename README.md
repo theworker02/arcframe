@@ -1,4 +1,24 @@
 <p align="center">
+  <img src="docs/logo.svg" alt="arcframe official logo" width="128" height="128">
+</p>
+
+<p align="center">
+  <a href="https://theworker02.github.io/arcframe/"><img src="https://img.shields.io/badge/docs-live-0B1F33?style=for-the-badge&labelColor=C9A227" alt="Docs"></a>
+  <a href="https://github.com/theworker02/arcframe/releases/tag/v1.0.0"><img src="https://img.shields.io/badge/release-v1.0.0-success?style=for-the-badge" alt="Release"></a>
+  <a href="https://github.com/theworker02/arcframe/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-see%20LICENSE-blue?style=for-the-badge" alt="License"></a>
+  <a href="https://github.com/theworker02/arcframe"><img src="https://img.shields.io/badge/status-maintained-informational?style=for-the-badge" alt="Status"></a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/version-1.0.0-0B1F33.svg" alt="version">
+  <img src="https://img.shields.io/badge/category-product-C9A227.svg" alt="category">
+  <img src="https://img.shields.io/badge/pages-enabled-222.svg" alt="pages">
+  <img src="https://img.shields.io/badge/docs-thickened-brightgreen.svg" alt="docs">
+  <img src="https://img.shields.io/badge/notes-detailed-lightgrey.svg" alt="notes">
+</p>
+
+
+<p align="center">
   <img src="assets/arcframe-readme.svg" alt="Arcframe" width="420" />
 </p>
 
@@ -472,3 +492,16 @@ This project is **proprietary**. Production use, redistribution, and commercial 
 ## Acquisition diligence
 
 Buyer-facing diligence materials live in [docs/acquisition/](./docs/acquisition/). Commercial licensing contact path: [COMMERCIAL.md](./COMMERCIAL.md).
+
+## Badges & release notes
+
+| Badge | Meaning |
+| --- | --- |
+| docs live | Public documentation / Pages surface for `arcframe` |
+| release v1.0.0 | Stable tagged release with narrative notes |
+| license | See repository `LICENSE` for terms |
+| status maintained | Actively kept in the @theworker02 portfolio |
+| version 1.0.0 | Documentation and brand completeness milestone |
+| pages enabled | Site intended at `https://theworker02.github.io/arcframe/` |
+
+Detailed narrative for the stable line lives in [CHANGELOG.md](./CHANGELOG.md) and the [v1.0.0 GitHub Release](https://github.com/theworker02/arcframe/releases/tag/v1.0.0).
